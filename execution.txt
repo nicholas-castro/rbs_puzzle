@@ -1,0 +1,13 @@
+Hint: First Code Input: a
+> /home/kali/Downloads/mystery.py(40)<module>()
+-> exec x
+(Pdb) c
+Code block demands input:
+
+### HERE I PRESS THE a KEY
+
+XXX lineno: 120, opcode: 71
+
+### Nothing happens, so I hit ^C
+
+^Ctoo slooooo00w!!
