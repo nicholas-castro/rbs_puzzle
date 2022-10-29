@@ -1,0 +1,118 @@
+(Pdb) x_func
+<function askdecrypt at 0xb6fc51b4>
+(Pdb) dis.dis(x_func)
+ 34           0 LOAD_CONST               1 (':R:')
+              3 STORE_FAST               1 (split_string)
+
+ 36           6 LOAD_GLOBAL              0 (time)
+              9 LOAD_ATTR                0 (time)
+             12 CALL_FUNCTION            0
+             15 STORE_FAST               2 (t0)
+
+ 37          18 LOAD_GLOBAL              1 (sys)
+             21 LOAD_ATTR                2 (stdin)
+             24 LOAD_ATTR                3 (fileno)
+             27 CALL_FUNCTION            0
+             30 STORE_FAST               3 (fd)
+
+ 38          33 LOAD_GLOBAL              4 (termios)
+             36 LOAD_ATTR                5 (tcgetattr)
+             39 LOAD_FAST                3 (fd)
+             42 CALL_FUNCTION            1
+             45 STORE_FAST               4 (old_settings)
+
+ 39          48 LOAD_GLOBAL              6 (tty)
+             51 LOAD_ATTR                7 (setraw)
+             54 LOAD_GLOBAL              1 (sys)
+             57 LOAD_ATTR                2 (stdin)
+             60 LOAD_ATTR                3 (fileno)
+             63 CALL_FUNCTION            0
+             66 CALL_FUNCTION            1
+             69 POP_TOP             
+
+ 40          70 LOAD_GLOBAL              8 (ord)
+             73 LOAD_GLOBAL              1 (sys)
+             76 LOAD_ATTR                2 (stdin)
+             79 LOAD_ATTR                9 (read)
+             82 LOAD_CONST               2 (1)
+             85 CALL_FUNCTION            1
+             88 CALL_FUNCTION            1
+             91 STORE_DEREF              0 (passphrase)
+
+ 42          94 LOAD_GLOBAL              4 (termios)
+             97 LOAD_ATTR               10 (tcsetattr)
+            100 LOAD_FAST                3 (fd)
+            103 LOAD_GLOBAL              4 (termios)
+            106 LOAD_ATTR               11 (TCSADRAIN)
+            109 LOAD_FAST                4 (old_settings)
+            112 CALL_FUNCTION            3
+            115 POP_TOP             
+
+ 44         116 LOAD_CONST               3 ('')
+            119 LOAD_ATTR               12 (join)
+            122 LOAD_GLOBAL             13 (map)
+            125 LOAD_CLOSURE             0 (passphrase)
+            128 BUILD_TUPLE              1
+            131 LOAD_CONST               4 (<code object <lambda> at 0xb7ae3728, file "/usr/local/bin/russian_doll.py", line 44>)
+            134 MAKE_CLOSURE             0
+            137 LOAD_FAST                0 (message)
+            140 CALL_FUNCTION            2
+            143 CALL_FUNCTION            1
+            146 STORE_FAST               5 (res)
+
+ 45         149 LOAD_GLOBAL              0 (time)
+            152 LOAD_ATTR                0 (time)
+            155 CALL_FUNCTION            0
+            158 STORE_FAST               6 (t1)
+
+ 46         161 LOAD_FAST                6 (t1)
+            164 LOAD_FAST                2 (t0)
+            167 BINARY_SUBTRACT     
+            168 LOAD_CONST               5 (4)
+            171 COMPARE_OP               4 (>)
+            174 POP_JUMP_IF_FALSE      213
+
+ 47         177 LOAD_CONST               3 ('')
+            180 LOAD_ATTR               12 (join)
+            183 LOAD_GLOBAL             13 (map)
+            186 LOAD_CLOSURE             0 (passphrase)
+            189 BUILD_TUPLE              1
+            192 LOAD_CONST               6 (<code object <lambda> at 0xb7015cc8, file "/usr/local/bin/russian_doll.py", line 47>)
+            195 MAKE_CLOSURE             0
+            198 LOAD_FAST                0 (message)
+            201 CALL_FUNCTION            2
+            204 CALL_FUNCTION            1
+            207 STORE_FAST               5 (res)
+            210 JUMP_FORWARD             0 (to 213)
+
+ 48     >>  213 LOAD_FAST                5 (res)
+            216 LOAD_ATTR               14 (split)
+            219 LOAD_FAST                1 (split_string)
+            222 CALL_FUNCTION            1
+            225 STORE_FAST               7 (x)
+
+ 49         228 LOAD_GLOBAL             15 (len)
+            231 LOAD_FAST                7 (x)
+            234 CALL_FUNCTION            1
+            237 LOAD_CONST               2 (1)
+            240 COMPARE_OP               2 (==)
+            243 POP_JUMP_IF_FALSE      266
+
+ 50         246 LOAD_CONST               7 ('finished')
+            249 STORE_FAST               8 (_)
+
+ 51         252 LOAD_FAST                7 (x)
+            255 LOAD_CONST               8 (0)
+            258 BINARY_SUBSCR       
+            259 LOAD_FAST                8 (_)
+            262 BUILD_TUPLE              2
+            265 RETURN_VALUE        
+
+ 52     >>  266 LOAD_FAST                7 (x)
+            269 LOAD_CONST               8 (0)
+            272 BINARY_SUBSCR       
+            273 LOAD_FAST                7 (x)
+            276 LOAD_CONST               2 (1)
+            279 BINARY_SUBSCR       
+            280 BUILD_TUPLE              2
+            283 RETURN_VALUE
